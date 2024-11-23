@@ -168,7 +168,7 @@
         }
 
 
-        /* Responsives Design */
+/* Responsives Design */
 /* Header Anpassungen für mobile Geräte */
 header h1 {
     font-size: 2.5rem; /* Kleinere Schriftgröße für den Header auf mobilen Geräten */
@@ -197,8 +197,52 @@ header p {
         padding: 12px 20px; /* Kleinere Schaltfläche */
         font-size: 1rem; /* Kleinere Schrift auf der Schaltfläche */
     }
+
+    /* Anpassung der Öffnungszeiten-Tabelle */
+    .hours table {
+        width: 100%; /* Tische auf 100% Breite setzen */
+        font-size: 1rem; /* Kleinere Schrift in Tabellen */
+    }
+
+    .hours table th,
+    .hours table td {
+        padding: 10px; /* Weniger Padding */
+        text-align: center;
+    }
+
+    /* Anpassung der Öffnungszeiten-Spalten */
+    .hours table td {
+        word-wrap: break-word; /* Umbruch bei langen Texten */
+    }
 }
 
+/* Anpassung für kleinere Bildschirme */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    header p {
+        font-size: 0.9rem;
+    }
+
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    .service-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .service-card p {
+        font-size: 1rem;
+    }
+
+    footer {
+        font-size: 0.9rem;
+    }
+}
 /* Anpassung der Überschriften im Content-Bereich */
 @media (max-width: 768px) {
     .services h2,
@@ -298,11 +342,11 @@ header p {
         }
 
         .hours h2 {
-            font-size: 2.8rem;
-            margin-bottom: 30px;
+            font-size: 2.7rem;
+            margin-bottom: 20px;
             color: #0056b3;
             text-transform: uppercase;
-            font-weight: 700;
+            font-weight: 600;
         }
 
         .hours table {
