@@ -169,25 +169,53 @@
 
 
         /* Responsives Design */
-@media (max-width: 1024px) {
+/* Header Anpassungen für mobile Geräte */
+header h1 {
+    font-size: 2.5rem; /* Kleinere Schriftgröße für den Header auf mobilen Geräten */
+}
+
+header p {
+    font-size: 1.1rem; /* Kleinere Schriftgröße für den Header-Text */
+}
+
+@media (max-width: 768px) {
+    /* Header - Weitere Anpassung auf mobilen Geräten */
+    header {
+        padding: 60px 20px; /* Weniger Abstand oben und unten */
+    }
+
     header h1 {
-        font-size: 3rem; /* Kleinere Schrift für Tablets */
+        font-size: 2rem; /* Noch kleinere Schriftgröße */
+        margin-bottom: 10px; /* Weniger Abstand zwischen der Überschrift und dem Text */
     }
 
     header p {
-        font-size: 1rem;
+        font-size: 1rem; /* Noch kleinere Schriftgröße für den Text */
     }
 
-    .service-card {
-        width: calc(50% - 20px); /* Zwei Karten pro Reihe */
+    .cta-button {
+        padding: 12px 20px; /* Kleinere Schaltfläche */
+        font-size: 1rem; /* Kleinere Schrift auf der Schaltfläche */
+    }
+}
+
+/* Anpassung der Überschriften im Content-Bereich */
+@media (max-width: 768px) {
+    .services h2,
+    .about h2,
+    .hours h2,
+    .contact h2,
+    .map h2 {
+        font-size: 2rem; /* Kleinere Überschrift auf mobilen Geräten */
     }
 
-    .map-container {
-        flex-direction: column; /* Adresse und Karte untereinander */
+    .services .service-card h3,
+    .service-card p {
+        font-size: 1rem; /* Kleinere Schriftgrößen für die Service-Card-Überschriften und Beschreibungen */
     }
-
-    .map .address, .map iframe {
-        max-width: 100%; /* Ganze Breite nutzen */
+    
+    .contact h2 {
+        font-size: 2rem; /* Kleinere Schrift für den "Kontakt"-Titel */
     }
 }
 
