@@ -14,7 +14,7 @@
 
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #f7f7f7;
+            background-color: #0056b3;
             color: #333;
             line-height: 1.6;
             padding-top: 60px;
@@ -29,13 +29,15 @@
         header {
             background: #0056b3;
             color: white;
-            padding: 80px 20px;
+            padding: 30px 20px;  /* Erhöht die Höhe des Headers */
             text-align: center;
             position: relative;
             background-size: cover;
             background-position: center;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-top: -60px;
         }
+
 
         header::after {
             content: "";
@@ -144,7 +146,7 @@
         }
 
         .service-card {
-            background-color: white;
+            background-color: #ffffff;
             border-radius: 10px;
             padding: 30px;
             width: calc(33.333% - 20px);
@@ -167,6 +169,68 @@
             font-size: 1.1rem;
             color: #555;
         }
+
+/* Why Gera Section */
+.why-gera {
+    padding: 80px 20px;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.why-gera h2 {
+    font-size: 2.6rem;
+    margin-bottom: 30px;
+    color: #0056b3;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.why-gera .why-gera-cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.why-gera-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    width: calc(50% - 20px); /* Zwei Karten nebeneinander */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.why-gera-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.why-gera-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #0056b3;
+}
+
+.why-gera-card p {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* Anpassungen für kleinere Bildschirme */
+@media (max-width: 768px) {
+    .why-gera .why-gera-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .why-gera-card {
+        width: 100%; /* Eine Karte pro Zeile auf mobilen Geräten */
+        margin-bottom: 20px;
+    }
+}
+
 
 
 /* Responsives Design */
@@ -321,7 +385,7 @@ header p {
         }
 
         .about h2 {
-            font-size: 3rem;
+            font-size: 2.6rem;
             margin-bottom: 30px;
             color: #0056b3;
             text-transform: uppercase;
@@ -343,7 +407,7 @@ header p {
         }
 
         .hours h2 {
-            font-size: 2.7rem;
+            font-size: 2.6rem;
             margin-bottom: 20px;
             color: #0056b3;
             text-transform: uppercase;
@@ -355,7 +419,7 @@ header p {
             font-size: 1.2rem;
             color: #555;
             border-collapse: collapse;
-            width: 80%;
+            width: 40%;
         }
 
         .hours table th,
@@ -375,15 +439,35 @@ header p {
             text-align: center;
         }
 
+    .payment {
+        padding: 40px 20px;
+        background-color: #ffffff;
+        text-align: center;
+        }
+
+    .payment h2 {
+        font-size: 2.3rem;
+        color: #0056b3;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-bottom: 20px;
+        }
+
+    .payment p {
+    font-size: 1.2rem;
+    color: #555;
+    }
+
+    
         /* Contact Section */
         .contact {
     padding: 80px 20px;
-    background-color: #ffffff;
+    background-color: #f0f4f7;
     text-align: center;
 }
 
 .contact h2 {
-    font-size: 3rem;
+    font-size: 2.3rem;
     margin-bottom: 30px;
     color: #0056b3;
     text-transform: uppercase;
@@ -412,7 +496,7 @@ header p {
     text-align: left;
     max-width: 600px;
     margin: 40px auto;
-    background: #f0f4f7;
+    background: #ffffff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -464,7 +548,7 @@ header p {
         .map {
     padding: 80px 20px;
     text-align: center;
-    background-color: #f0f4f7;
+    background-color: #ffffff;
 }
 
 .map h2 {
@@ -534,45 +618,64 @@ header p {
     </style>
 </head>
 <body>
-    <header>
-        <h1>Schlüsseldienst Heinz</h1>
-        <p>Verlässlich, Schnell, Kompetent!</p>
-        <a href="tel:+491234567890" class="cta-button">📞 Sofort anrufen: +49 1520 2717240</a>
-    </header>
 
-    <nav>
-        <ul>
-            <li><a href="#services">Unsere Leistungen</a></li>
-            <li><a href="#about">Über uns</a></li>
-            <li><a href="#hours">Öffnungszeiten</a></li>
-            <li><a href="#contact">Kontakt</a></li>
-            <li><a href="#map">Standort</a></li>
-        </ul>
-    </nav>
+    
+        <header>
+            <h1>Schlüsseldienst in Gera</h1>
+            <p>Ihr zuverlässiger Partner für Türenöffnungen und mehr!</p>
+            <a href="tel:+491234567890" class="cta-button">📞 Sofort anrufen: +49 1520 2717240</a>
+        </header>
+
+        <section class="about" id="about">
+            <h2>Über den Schlüsseldienst in Gera
+            </h2>
+            <p>Seit 2000 biete ich schnelle, professionelle und zuverlässige Hilfe bei Türöffnungen und Notöffnungen in Gera und Umgebung. Als ansässiger Schlüsseldienst aus Gera lege ich besonderen Wert auf schnelle Reaktionszeiten und einen effektiven Service. Durch meine lokale Präsenz sind kurze Anfahrtswege garantiert, sodass Sie im Notfall schnell unterstützt werden.
+            </p>
+        </section>
+
 
     <section class="services" id="services">
-        <h2>Unsere Leistungen</h2>
+        <h2>Dienstleistungen</h2>
         <div class="service-cards">
             <div class="service-card">
-                <h3>🔧 Reparatur für Türschlösser</h3>
-                <p>Wir reparieren beschädigte oder defekte Türschlösser schnell und zuverlässig.</p>
+                <h3>🚪 Türöffnungen ohne Schäden</h3>
+                <p>Bei einer zugefallenen Tür oder einem verlorenen Schlüssel biete ich eine schnelle und beschädigungsfreie Türöffnung an.</p>
             </div>
             <div class="service-card">
-                <h3>🔒 Austausch von Vorhängeschlössern</h3>
-                <p>Professioneller Austausch von Vorhängeschlössern für maximale Sicherheit.</p>
+                <h3>🚨 Notöffnungen bei verschlossenen Türen</h3>
+                <p>Im Notfall, wie z. B. einem versehentlich verschlossenen Raum, stehe ich Ihnen mit einer schnellen Lösung zur Seite.</p>
             </div>
             <div class="service-card">
-                <h3>🔑 Schlüsseldienst</h3>
-                <p>Verlässliche und schnelle Hilfe, wenn Sie sich ausgesperrt haben.</p>
+                <h3>⚡ Schnelle Hilfe bei Schlüsselnotfällen</h3>
+                <p>Wenn Sie sich ausgesperrt haben oder einen Schlüssel benötigen, können Sie auf schnelle und zuverlässige Hilfe zählen.</p>
             </div>
         </div>
     </section>
 
-    <section class="about" id="about">
-        <h2>Über uns</h2>
-        <p>Der Schlüsseldienst für Gera/Bad Köstritz ist seit 2015 in Thüringen tätig. Wir spezialisieren uns auf das Öffnen und Warten von abgeschlossenen und zugefallenen Wohnungstüren. Unsere Mitarbeiter bieten qualitativ hochwertige Produkte und Dienstleistungen an, auf die Sie sich verlassen können. Wir haben das Richtige für Sie – und das zu erschwinglichen Preisen.
-            Das Ziel des Schlüsseldienstes für Gera/Bad Köstritz ist es, Ihnen einen freundlichen, angemessenen, professionellen und erstklassigen Service zu bieten.</p>
+    <section class="why-gera" id="why-gera">
+        <h2>Warum Schlüsseldienst in Gera?</h2>
+        <p>Als Schlüsseldienst in Gera biete ich schnelle, zuverlässige und professionelle Hilfe in Notfällen.</p>
+        <div class="why-gera-cards">
+            <div class="why-gera-card">
+                <h3>🔑 Lokal und Schnell</h3>
+                <p>Als Geraer Schlüsseldienst ermögliche ich eine schnelle Hilfe durch kurze Anfahrtswege.</p>
+            </div>
+            <div class="why-gera-card">
+                <h3>📅 Erfahrung seit 2000</h3>
+                <p>Mit über 20 Jahren Erfahrung im Bereich Türöffnungen und Schlüsselnotdiensten in Gera können Sie auf Fachkompetenz und Zuverlässigkeit vertrauen.</p>
+            </div>
+            <div class="why-gera-card">
+                <h3>💰 Faire Preise</h3>
+                <p>Es gibt keine versteckten Kosten – alles wird im Vorfeld transparent und fair kommuniziert.</p>
+            </div>
+            <div class="why-gera-card">
+                <h3>🤝 Vertrauen und Diskretion</h3>
+                <p>Als lokaler Dienstleister in Gera steht Professionalität und Diskretion an erster Stelle.</p>
+            </div>
+        </div>
     </section>
+    
+
 
     <section class="hours" id="hours">
         <h2>Öffnungszeiten</h2>
@@ -586,25 +689,37 @@ header p {
             <tbody>
                 <tr>
                     <td>Montag – Freitag</td>
-                    <td>07:00 – 16:00 Uhr<br>Danach mit Zuschlag</td>
+                    <td>08:00 – 18:00 Uhr<br></td>
                 </tr>
                 <tr>
                     <td>Samstag</td>
-                    <td>09:00 – 17:00 Uhr</td>
+                    <td>09:00 – 14:00 Uhr</td>
+                </tr>
+                <tr>
+                    <td>Sonntag</td>
+                    <td>Nach Absprache (nur nach vorheriger Vereinbarung)</td>
                 </tr>
             </tbody>
         </table>
+        <p><strong>Hinweis:</strong> Außerhalb der regulären Geschäftszeiten sind Termine nur nach vorheriger Absprache möglich.</p>
+    </section>
+
+
+    <section class="payment" id="payment">
+        <h2>Zahlungsmodalitäten</h2>
+        <p>Bitte beachten Sie, dass nur Barzahlung akzeptiert wird. Eine bargeldlose Zahlung ist nicht möglich.</p>
     </section>
 
     <section class="contact" id="contact">
-        <h2>Kontakt</h2>
+        <h2>Kontaktinformationen</h2>
         <div class="contact-details">
-            <p><strong>📞 Telefon:</strong> <a href="tel:+4915202717240">+49 1520 2717240</a></p>
-            <p><strong>📧 E-Mail:</strong> <a href="mailto:info@schluesseldienst-heinz.de">info@schluesseldienst-heinz.de</a></p>
+            <p><strong>📞 Telefon (mobil):</strong> <a href="tel:+4915202717240">+49 1520 2717240</a></p>
+            <p><strong>📞 Telefon (Festnetz):</strong> <a href="tel:+49 365 55175945">+49 365 55175945</a></p>
+            <p><strong>📧 E-Mail:</strong> <a href="mailto:rrenegade23@gmx.de">rrenegade23@gmx.de</a></p>
             <p><strong>🏠 Adresse:</strong> Am Stublacher Wege 13, 07552 Gera</p>
         </div>
         <div class="contact-form">
-            <h3>Schreiben Sie uns</h3>
+            <h3>Kontaktformular</h3>
             <form action="/kontaktformular" method="post">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" placeholder="Ihr Name" required>
@@ -612,8 +727,11 @@ header p {
                 <label for="email">E-Mail:</label>
                 <input type="email" id="email" name="email" placeholder="Ihre E-Mail-Adresse" required>
                 
-                <label for="address">Adresse:</label>
-                <input type="text" id="address" name="address" placeholder="Ihre Adresse" required>
+                <label for="phone">Telefonnummer:</label>
+                <input type="tel" id="phone" name="phone" placeholder="Ihre Telefonnummer" required>
+                
+                <label for="subject">Betreff:</label>
+                <input type="text" id="subject" name="subject" placeholder="Ihr Betreff" required>
                 
                 <label for="message">Nachricht:</label>
                 <textarea id="message" name="message" rows="5" placeholder="Ihre Nachricht" required></textarea>
