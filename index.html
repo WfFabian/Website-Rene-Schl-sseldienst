@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Upload and Download</title>
     <style>
-        /* Inline CSS */
         body {
             font-family: Arial, sans-serif;
             padding: 20px;
@@ -26,52 +25,89 @@
             text-decoration: none;
             color: blue;
         }
+        .status {
+            color: green;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <h1>Upload Files</h1>
-    <form id="uploadForm">
-        <input type="file" id="fileInput" multiple>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" id="fileInput" name="file">
         <button type="submit">Upload</button>
     </form>
+
     <h2>Uploaded Files</h2>
+    <p class="status" id="status">Ready to upload</p>
     <ul id="fileList"></ul>
 
     <script>
-        // Inline JavaScript
         const uploadForm = document.getElementById('uploadForm');
         const fileInput = document.getElementById('fileInput');
         const fileList = document.getElementById('fileList');
+        const statusElement = document.getElementById('status');
 
-        // Simulierter Speicher für Dateien
-        const fakeStorage = [];
+        const apiUrl = "https://your-backend-server.com"; // Ersetze durch deinen echten Backend-Endpunkt
 
-uploadForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const files = fileInput.files;
+        // Hochladen der Datei
+        uploadForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
 
-    for (let file of files) {
-        fakeStorage.push({
-            name: file.name,
-            url: URL.createObjectURL(file)
+            const file = fileInput.files[0];
+            if (!file) {
+                alert('Please select a file!');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            statusElement.textContent = 'Uploading...';
+
+            try {
+                const response = await fetch(`${apiUrl}/upload`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    alert('File uploaded!');
+                    loadFiles();
+                } else {
+                    alert('Failed to upload file.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred during the upload.');
+            }
+
+            statusElement.textContent = 'Ready to upload';
         });
-    }
-    alert('Files uploaded!');
-    displayFiles();
-});
 
+        // Dateien abrufen und anzeigen
+        async function loadFiles() {
+            try {
+                const response = await fetch(`${apiUrl}/files`);
+                const files = await response.json();
 
-        function displayFiles() {
-            fileList.innerHTML = '';
-            fakeStorage.forEach(file => {
-                const li = document.createElement('li');
-                li.innerHTML = `
-                    ${file.name} 
-                    <a href="${file.url}" download="${file.name}">Download</a>
-                `;
-                fileList.appendChild(li);
-            });
+                fileList.innerHTML = '';
+                files.forEach(file => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+                        ${file.name} 
+                        <a href="${apiUrl}/download/${file.name}" download>Download</a>
+                    `;
+                    fileList.appendChild(li);
+                });
+            } catch (error) {
+                console.error('Error fetching files:', error);
+                alert('Could not load files.');
+            }
         }
+
+        // Initial Dateien laden
+        loadFiles();
     </script>
 </body>
 </html>
