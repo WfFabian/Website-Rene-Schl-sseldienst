@@ -7,26 +7,27 @@
 </head>
 <body>
     <h1>Dateien hochladen und später herunterladen</h1>
-    <form action="upload.php" method="POST" enctype="multipart/form-data">
+    <form id="uploadForm" action="/api/upload" method="POST" enctype="multipart/form-data">
         <label for="file">Wähle eine Datei zum Hochladen:</label><br>
         <input type="file" name="file" id="file" required><br><br>
         <input type="submit" value="Hochladen">
     </form>
 
     <h2>Verfügbare Dateien zum Herunterladen:</h2>
-    <ul>
-        <?php
-            // Verzeichnis mit den hochgeladenen Dateien durchsuchen
-            $dir = "uploads/";
-            if (is_dir($dir)) {
-                $files = scandir($dir);
-                foreach ($files as $file) {
-                    if ($file != "." && $file != "..") {
-                        echo "<li><a href='$dir$file' download>$file</a></li>";
-                    }
-                }
-            }
-        ?>
-    </ul>
+    <ul id="fileList"></ul>
+
+    <script>
+        // Dynamisches Laden der verfügbaren Dateien
+        fetch('/api/files')
+            .then(response => response.json())
+            .then(data => {
+                const fileList = document.getElementById('fileList');
+                data.files.forEach(file => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<a href="${file.url}" download>${file.name}</a>`;
+                    fileList.appendChild(li);
+                });
+            });
+    </script>
 </body>
 </html>
