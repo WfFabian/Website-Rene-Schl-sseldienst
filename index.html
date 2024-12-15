@@ -46,20 +46,20 @@
         // Simulierter Speicher für Dateien
         const fakeStorage = [];
 
-        uploadForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const files = fileInput.files;
+    uploadForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const files = fileInput.files;
 
-            for (let file of files) {
-                // Simuliere das Hochladen (hier einfach in den Speicher legen)
-                fakeStorage.push({
-                    name: file.name,
-                    url: URL.createObjectURL(file) // Temporäre URL für den Download
-                });
-            }
-            alert('Files uploaded!');
-            displayFiles();
+    for (let file of files) {
+        fakeStorage.push({
+            name: file.name,
+            url: URL.createObjectURL(file)
         });
+    }
+    alert('Files uploaded!');
+    displayFiles();
+    });
+
 
         function displayFiles() {
             fileList.innerHTML = '';
