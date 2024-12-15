@@ -1,8 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Upload</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Inline CSS */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+    </style>
 </head>
 <body>
     <h1>Upload Files</h1>
@@ -12,6 +32,36 @@
     </form>
     <h2>Uploaded Files</h2>
     <ul id="fileList"></ul>
-    <script src="script.js"></script>
+
+    <script>
+        // Inline JavaScript
+        const uploadForm = document.getElementById('uploadForm');
+        const fileInput = document.getElementById('fileInput');
+        const fileList = document.getElementById('fileList');
+
+        // Simulierter Speicher (Firebase oder andere APIs können hier verwendet werden)
+        const fakeStorage = [];
+
+        uploadForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const files = fileInput.files;
+
+            for (let file of files) {
+                // Simuliere das Hochladen (kann durch echten API-Aufruf ersetzt werden)
+                fakeStorage.push(file.name);
+            }
+            alert('Files uploaded!');
+            displayFiles();
+        });
+
+        function displayFiles() {
+            fileList.innerHTML = '';
+            fakeStorage.forEach(file => {
+                const li = document.createElement('li');
+                li.textContent = file;
+                fileList.appendChild(li);
+            });
+        }
+    </script>
 </body>
 </html>
