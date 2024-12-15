@@ -46,7 +46,7 @@
         // Simulierter Speicher für Dateien
         const fakeStorage = [];
 
-    uploadForm.addEventListener('submit', async (e) => {
+uploadForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const files = fileInput.files;
 
@@ -58,7 +58,7 @@
     }
     alert('Files uploaded!');
     displayFiles();
-    });
+});
 
 
         function displayFiles() {
