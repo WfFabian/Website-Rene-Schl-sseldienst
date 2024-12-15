@@ -17,36 +17,52 @@
     <ul id="fileList"></ul>
 
     <script>
-        // Ersetze dies mit deinem Cloudinary Cloud Name und Upload Preset
         const cloudName = 'dq8vcfoa4'; // Dein Cloudinary Cloud Name
         const uploadPreset = 'DateiHochladen'; // Dein Upload Preset
 
-        // Cloudinary-Widget erstellen
+        // Initialisiere das Widget von Cloudinary
         const cloudinaryWidget = cloudinary.createUploadWidget({
             cloudName: cloudName,
             uploadPreset: uploadPreset,
-            sources: ['local', 'url', 'camera'], // Quellen für den Upload
-            multiple: true, // Mehrere Dateien können gleichzeitig hochgeladen werden
+            sources: ['local', 'url', 'camera'],
+            multiple: true, // Erlaube den Upload von mehreren Dateien
         }, (error, result) => {
             if (!error && result && result.event === "success") {
-                // Wenn der Upload erfolgreich war, die Datei anzeigen
                 const fileUrl = result.info.secure_url;
                 console.log('Datei hochgeladen:', fileUrl);
 
-                // Zeigt den Upload-Link im UI an
-                const fileList = document.getElementById('fileList');
-                const li = document.createElement('li');
-                li.innerHTML = `<a href="${fileUrl}" download>${result.info.public_id}</a>`;
-                fileList.appendChild(li);
+                // Neue Datei in Local Storage speichern
+                let uploadedFiles = JSON.parse(localStorage.getItem('uploadedFiles')) || [];
+                uploadedFiles.push(fileUrl);
+                localStorage.setItem('uploadedFiles', JSON.stringify(uploadedFiles));
+
+                // Datei in der Liste anzeigen
+                renderFileList();
             } else if (error) {
                 console.error('Fehler beim Hochladen:', error);
             }
         });
 
-        // Öffnet das Widget beim Klicken auf den Button
+        // Öffnet das Cloudinary Widget
         document.getElementById('upload_widget_opener').addEventListener('click', () => {
             cloudinaryWidget.open();
         });
+
+        // Rendert die Liste der hochgeladenen Dateien
+        function renderFileList() {
+            const fileList = document.getElementById('fileList');
+            fileList.innerHTML = ''; // Liste zurücksetzen
+
+            let uploadedFiles = JSON.parse(localStorage.getItem('uploadedFiles')) || [];
+            uploadedFiles.forEach(url => {
+                const li = document.createElement('li');
+                li.innerHTML = `<a href="${url}" download>Herunterladen</a>`;
+                fileList.appendChild(li);
+            });
+        }
+
+        // Beim Laden der Seite die Liste der Dateien anzeigen
+        window.onload = renderFileList;
     </script>
 </body>
 </html>
