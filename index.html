@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Upload</title>
+    <title>File Upload and Download</title>
     <style>
         /* Inline CSS */
         body {
@@ -22,6 +22,10 @@
         li {
             margin-bottom: 5px;
         }
+        a {
+            text-decoration: none;
+            color: blue;
+        }
     </style>
 </head>
 <body>
@@ -39,7 +43,7 @@
         const fileInput = document.getElementById('fileInput');
         const fileList = document.getElementById('fileList');
 
-        // Simulierter Speicher (Firebase oder andere APIs können hier verwendet werden)
+        // Simulierter Speicher für Dateien
         const fakeStorage = [];
 
         uploadForm.addEventListener('submit', async (e) => {
@@ -47,8 +51,11 @@
             const files = fileInput.files;
 
             for (let file of files) {
-                // Simuliere das Hochladen (kann durch echten API-Aufruf ersetzt werden)
-                fakeStorage.push(file.name);
+                // Simuliere das Hochladen (hier einfach in den Speicher legen)
+                fakeStorage.push({
+                    name: file.name,
+                    url: URL.createObjectURL(file) // Temporäre URL für den Download
+                });
             }
             alert('Files uploaded!');
             displayFiles();
@@ -58,7 +65,10 @@
             fileList.innerHTML = '';
             fakeStorage.forEach(file => {
                 const li = document.createElement('li');
-                li.textContent = file;
+                li.innerHTML = `
+                    ${file.name} 
+                    <a href="${file.url}" download="${file.name}">Download</a>
+                `;
                 fileList.appendChild(li);
             });
         }
